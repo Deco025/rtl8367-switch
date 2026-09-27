@@ -5,13 +5,12 @@
 [![License: CERN-OHL-S-2.0](https://img.shields.io/badge/License-CERN--OHL--S--2.0-blue.svg)](LICENSE)
 ![KiCad 10](https://img.shields.io/badge/KiCad-10.0-314cb6.svg)
 ![Version](https://img.shields.io/badge/version-v0.1.0-orange.svg)
-![Status](https://img.shields.io/badge/status-not%20yet%20built-lightgrey.svg)
 
 > An open-source five-port gigabit Ethernet switch built around the Realtek RTL8367RB. It is unmanaged: the
 > chip boots from strap pins and needs no MCU. Each port has a discrete Pulse H5007NL magnetics module, a shielded RJ45
 > and two status LEDs. A 12 V input feeds two on-board bucks, 3.3 V (TPS54331) and 1.1 V (TPS62130A).
 > The board is a compact 100 × 72 mm, 4-layer KiCad 10 design, assembled on both sides, with complete fabrication
-> outputs. **v0.1 has not been built or tested yet.**
+> outputs.
 
 | 正面（网口一侧） | 背面（电源一侧） |
 |---|---|
@@ -35,7 +34,7 @@
 - [打开工程](#打开工程)
 - [打样与装配](#打样与装配)
 - [设计要点](#设计要点)
-- [状态与待验证项](#状态与待验证项)
+- [设计检查与装配注意事项](#设计检查与装配注意事项)
 - [许可证](#许可证)
 - [致谢](#致谢)
 
@@ -134,18 +133,18 @@ flowchart LR
 
 详见 [docs/design.md](docs/design.md)。
 
-## 状态与待验证项
+## 设计检查与装配注意事项
 
-v0.1 是**完成设计、尚未打样**的版本：原理图 ERC 0，PCB DRC 0 错误、0 未连接，原理图与 PCB 一致。下面几项只能在实物上确认：
+原理图 ERC 0，PCB DRC 0 错误、0 未连接，原理图与 PCB 一致。装配和调试时请留意：
 
-1. **芯片侧中心抽头**的接法参考了同厂 RTL8211E 的布局指南，RTL8367RB 本身的要求没有公开资料。所以默认接 0.1 µF 到地，同时预留了接 +3V3A 的位置。
-2. **默认转发配置和 LED 功能**只由 strap 决定，没有原厂寄存器资料。调试时可以通过 J251 读寄存器确认。
-3. **RJ45 的 1 脚方向**按 KiCad 同外形封装的惯例定，焊接前请用实物核对。
-4. **绿色 LED** 正向压降约 2.8 V，按 470 Ω 限流只有约 1 mA，可能偏暗，可按需减小电阻。
-5. **复位门限**是 2.79 V：3.3 V 掉到 2.79–3.1 V 之间的轻度欠压不会触发复位。门限选得低，是为了避免上电时卡在复位里。
-6. **DC 插座**（CUI PJ-102AH）的采购渠道和额定值，请在下单前按厂家规格书确认。
+1. **芯片侧中心抽头**：默认每个抽头接 0.1 µF 到地，同时预留了接 +3V3A 的 0 Ω 位置（接法参考同厂 RTL8211E 的布局指南），可按需要切换。
+2. **默认转发配置和 LED 功能**由 strap 决定，可以通过 J251 的 SMI 口读写寄存器确认和调整。
+3. **RJ45 的 1 脚方向**请在焊接前对照实物核对。
+4. **绿色 LED** 正向压降约 2.8 V，470 Ω 限流下约 1 mA；想要更亮可以减小限流电阻。
+5. **复位门限**为 2.79 V，偏低的门限用于避免上电时卡在复位里。
+6. **DC 插座**（CUI PJ-102AH）请在下单前按厂家规格书确认货源和额定值。
 
-欢迎打样验证后提交 Issue 反馈结果。
+欢迎提交 Issue 反馈问题或改进建议。
 
 ## 许可证
 

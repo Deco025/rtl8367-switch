@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "rtl8367-switch") (type "KiCad") (uri "${KIPRJMOD}/lib/rtl8367-switch.kicad_sym") (options "") (descr "Project symbols: RTL8367RB-VB-CG, H5007NL, TPS54331DDA"))
+)

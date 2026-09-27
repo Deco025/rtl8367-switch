@@ -1,0 +1,21 @@
+** Drc report for rtl8367-switch.kicad_pcb **
+** Created on 2026-09-27T02:08:10 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 1 DRC violations **
+[lib_footprint_mismatch]: Footprint 'BarrelJack_CUI_PJ-102AH_Horizontal' does not match copy in library 'Connector_BarrelJack'
+    Local override; warning
+    @(194.9000 mm, 84.0000 mm): Footprint J101
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **
